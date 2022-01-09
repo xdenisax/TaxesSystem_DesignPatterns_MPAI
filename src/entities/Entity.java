@@ -33,8 +33,8 @@ public abstract class Entity implements EntityInterface {
 		this.taxAmount = taxAmount;
 	}
 	
-	public void presentEntity() {
-		System.out.println(getName() + " with identifier " + getIdentifier() + " with address "+ getAddress());
+	public String presentEntity() {
+		 return getName() + " with identifier " + getIdentifier() + " with address "+ getAddress() + " plateste taxe in valoare de " + getTaxAmount() + " lei";
 	}
 	
 }
