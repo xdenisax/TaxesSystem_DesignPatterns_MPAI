@@ -5,13 +5,10 @@ import java.util.Scanner;
 import entities.Entity;
 import entities.EntityFactory;
 import entities.EntityInterface;
-import entities.Individual;
-import entities.JuridicalEntity;
 import taxes.DividendTax;
 import taxes.GamblingTax;
 import taxes.IncomeTax;
 import taxes.ProfitTax;
-import taxes.TaxDecorator;
 import taxes.VAT;
 import taxes.WageTax;
 
@@ -41,9 +38,6 @@ public class Portal {
 				}
 			}
 		} 
-		
-		
-	
 		userInput.close();
 	}
 
@@ -94,7 +88,6 @@ public class Portal {
 			}		
 		}
 		return incomeType;
-		
 	}
 
 	//Decorator
