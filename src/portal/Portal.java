@@ -1,5 +1,8 @@
 package portal;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import database.Database;
@@ -14,6 +17,7 @@ import taxes.IncomeTax;
 import taxes.ProfitTax;
 import taxes.VAT;
 import taxes.WageTax;
+import visitor.FileExportVisitor;
 
 
 public class Portal {
@@ -190,5 +194,20 @@ public class Portal {
 		}
 		
 		return entityFactory.createEntity(entityType, name, identifier, address);
+	}
+
+	public static void writeToFile(List<Entity> entities) {
+		FileExportVisitor fileExportVisitor = new FileExportVisitor();
+
+		String report = fileExportVisitor.getTextToWrite(entities);
+		try {
+			FileWriter myWriter = new FileWriter("Raport.txt");
+			myWriter.write(report);
+			myWriter.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
 	}
 }
