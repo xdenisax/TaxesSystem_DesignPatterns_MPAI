@@ -1,6 +1,9 @@
 package entities;
 
-public abstract class Entity implements EntityInterface {
+import visitor.Visitable;
+import visitor.Visitor;
+
+public abstract class Entity implements EntityInterface, Visitable {
 	private String name; 
 	private String identifier;
 	private String address;
@@ -12,7 +15,7 @@ public abstract class Entity implements EntityInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getIdentifier() {
 		return identifier;
 	}
@@ -36,5 +39,5 @@ public abstract class Entity implements EntityInterface {
 	public String presentEntity() {
 		 return getName() + " with identifier " + getIdentifier() + " with address "+ getAddress() + " plateste taxe in valoare de " + getTaxAmount() + " lei";
 	}
-	
+
 }

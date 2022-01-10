@@ -1,5 +1,7 @@
 package entities;
 
+import visitor.Visitor;
+
 public class JuridicalEntity extends Entity{
 	public JuridicalEntity(String name, String identifier, String address) {
 		setName(name);
@@ -11,5 +13,10 @@ public class JuridicalEntity extends Entity{
 	@Override
 	public double calculateTaxes() {
 		return getTaxAmount();
+	}
+
+	@Override
+	public String accept(Visitor visitor) {
+		return visitor.visitJuridical(this);
 	}
 }
