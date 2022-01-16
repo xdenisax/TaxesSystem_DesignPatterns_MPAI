@@ -89,14 +89,20 @@ public class Portal {
 					} else {
 						System.out.println("Nu exista nicio inregistrare.");
 					}
+					
+
+					System.out.println("Doriti sa mai realizati si alte operatiuni? \n 1- Da \n 2- Nu ");
+					String userTerminationChoice = userInput.nextLine();
+					if( userTerminationChoice.equals("2")) {
+						isProcessTerminated = true;
+						writeToFile(fullAccessDatabase.getEntities());
+					}
+				} else {
+					isProcessTerminated= true;
+					System.out.println("Parola a fost introdusa in mod incorect de prea multe ori. Accesul este acum restrictionat.");
 				}
 			}
 			
-			System.out.println("Doriti sa mai realizati si alte operatiuni? \n 1- Da \n 2- Nu ");
-			String userTerminationChoice = userInput.nextLine();
-			if( userTerminationChoice.equals("2")) {
-				isProcessTerminated = true;
-			}
 		}
 	
 		
@@ -204,9 +210,9 @@ public class Portal {
 			FileWriter myWriter = new FileWriter("Raport.txt");
 			myWriter.write(report);
 			myWriter.close();
-			System.out.println("Successfully wrote to the file.");
+			System.out.println("Datele au fost stocate cu succes in Raport.txt");
 		} catch (IOException e) {
-			System.out.println("An error occurred.");
+			System.out.println("Nu s-a putut finaliza stocarea datelor.");
 			e.printStackTrace();
 		}
 	}
